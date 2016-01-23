@@ -9,12 +9,18 @@
  * @author  Michael Kšlling and David J. Barnes
  * @version 2011.07.31
  */
+
+import java.awt.Color; 
 public class Picture
 {
+    private Square sky;
+    private Circle sun2;
     private Square wall;
     private Square window;
     private Triangle roof;
     private Circle sun;
+    private Square half;
+    private Person peep;
 
     /**
      * Constructor for objects of class Picture
@@ -29,6 +35,42 @@ public class Picture
      */
     public void draw()
     {
+        wall = new Square();
+        wall.moveHorizontal(-140);
+        wall.moveVertical(20);
+        wall.changeSize(120);
+        wall.makeVisible();
+        
+        window = new Square();
+        window.changeColor("White");
+        window.moveHorizontal(-120);
+        window.moveVertical(40);
+        window.changeSize(40);
+        window.makeVisible();
+
+        roof = new Triangle();  
+        roof.changeSize(60, 180);
+        roof.moveHorizontal(20);
+        roof.moveVertical(-60);
+        roof.makeVisible();
+
+        sun = new Circle();
+        sun.changeColor("yellow");
+        sun.moveHorizontal(100);
+        sun.moveVertical(-40);
+        sun.changeSize(80);
+        sun.makeVisible();
+    }
+    
+    public void sunSet()
+    {
+        sky = new Square();
+        sky.moveHorizontal(-640);
+        sky.moveVertical(-620);
+        sky.changeSize(3000);
+        sky.changeColor("blue");
+        sky.makeVisible();
+       
         wall = new Square();
         wall.moveHorizontal(-140);
         wall.moveVertical(20);
@@ -51,11 +93,25 @@ public class Picture
         sun = new Circle();
         sun.changeColor("yellow");
         sun.moveHorizontal(100);
-        sun.moveVertical(-40);
+        sun.moveVertical(100);
         sun.changeSize(80);
         sun.makeVisible();
+        
+        half = new Square();
+        half.changeColor("green");
+        half.moveHorizontal(-400);
+        half.moveVertical(110);
+        half.changeSize(800);
+        half.makeVisible();
+        
+        peep = new Person();
+        peep.moveHorizontal(0);
+        peep.moveVertical(0);
+        peep.makeVisible();
+        
+        sun.slowMoveVertical(200);
     }
-
+    
     /**
      * Change this picture to black/white display
      */
